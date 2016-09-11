@@ -1,0 +1,3 @@
+rootProject.name = 'RNV2ex'
+
+include ':app'
