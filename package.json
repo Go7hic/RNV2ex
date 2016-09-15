@@ -6,7 +6,36 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "axios": "^0.14.0",
+    "dev-ip": "^1.0.1",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.7.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react-native": "^1.1.0-beta",
+    "flux-standard-action": "^0.6.1",
+    "gulp": "^3.9.1",
+    "gulp-replace": "^0.5.4",
+    "gulp-util": "^3.0.7",
+    "lodash": "^4.11.2",
+    "moment": "^2.13.0",
+    "query-string": "^4.1.0",
     "react": "15.3.1",
-    "react-native": "0.33.0"
+    "react-native": "0.33.0",
+    "react-native-code-push": "^1.11.0-beta",
+    "react-native-navigation": "^1.0.30",
+    "react-native-vector-icons": "^2.1.0",
+    "react-redux": "^4.4.5",
+    "react-timer-mixin": "^0.13.3",
+    "redux": "^3.5.x",
+    "redux-actions": "^0.9.1",
+    "redux-persist": "^3.2.2",
+    "redux-thunk": "^2.0.1",
+    "remote-redux-devtools": "^0.2.0",
+    "remote-redux-devtools-on-debugger": "^0.4.7"
+  },
+  "devDependencies": {
+    "react-native-webpack-server": "^0.9.3"
   }
 }
