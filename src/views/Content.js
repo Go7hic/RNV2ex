@@ -1,14 +1,14 @@
 
 import React, {
-    Component,
+  Component,
 } from 'react'
 import {
-StyleSheet,
-    ListView,
-    TouchableOpacity,
-    Text,
-    WebView,
-    View,
+  StyleSheet,
+  ListView,
+  TouchableOpacity,
+  Text,
+  WebView,
+  View,
 } from 'react-native'
 import Header from '../components/Header'
 const styles = StyleSheet.create({
@@ -24,30 +24,22 @@ class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      url: this.props.contenturl,
-      scalesPageToFit: true,
+     
     }
   }
 
   render() {
-    const {contenturl} = this.props
+    const { topicItem } = this.props
     console.log(contenturl)
     return (
       <View style={styles.container}>
-      <Header title="V2EX" foreground="dark" style={{ backgroundColor: '#fff' }} />
-        <WebView
-          ref={WEBVIEW_REF}
-          automaticallyAdjustContentInsets={false}
-          source={{ uri: this.state.url }}
-          javaScriptEnabled
-          domStorageEnabled
-          decelerationRate="normal"
-          onNavigationStateChange={this.onNavigationStateChange}
+        <Header title="V2EX" foreground="dark" style={{ backgroundColor: '#fff' }} />
+        <View style={styles.content}>
+          {topicItem}
+        </View>
+        <View style={styles.reply}>
 
-          startInLoadingState
-          scalesPageToFit={this.state.scalesPageToFit}
-        />
-
+        </View>
       </View>
     )
   }

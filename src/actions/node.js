@@ -6,7 +6,7 @@ export const getNode = createAction(types.GET_NODE, async (nodename) => {
   return await axios(api.node, {name: nodename})
     .then(response => {
       return {
-        latestTopic: response.data,
+        node: response.data,
       }
     })
     .catch((error) => {

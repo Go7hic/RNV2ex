@@ -20,29 +20,28 @@ export default class Latest extends React.Component {
 
   constructor(props) {
     super(props)
-    this.toGoContent = this.toGoContent.bind(this)
+    this.toContent = this.toContent.bind(this)
   }
   static propTypes = {
     router: PropTypes.object,
     // contentUrl: PropTypes.Function,
   }
 
-  toGoContent(item) {
+  toContent(item) {
+    this.props['topicItem']=item
     this.props.router.toContent({})
+    alert(2)
    
   }
 
   render() {
     const latestData = this.props.latestTopic
-    const { router, contentUrl } = this.props
-    console.log(router)
+    const { router } = this.props
+    console.log(latestData)
     return (
       <View style={styles.container}>
         {latestData !== undefined ? latestData.map((item, idx) => (
-          // contentUrl = item.url
-          <TouchableOpacity key={idx} contentUrl={item.url} onPress={(item) => {
-            router.toContent()
-          }}>
+          <TouchableOpacity key={idx} onPress={this.toContent(item)}>
             <View>
               <Text>{item.title}</Text>
             </View>

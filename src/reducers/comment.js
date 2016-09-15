@@ -5,7 +5,7 @@ export default function (state = { }, action) {
   const { sequence = {} } = meta
   const status = sequence.type === 'start'
   switch (type) {
-  case types.GET_ALL_NODE:
+  case types.GET_COMMENT:
     return {
       ...state,
       ...payload,
