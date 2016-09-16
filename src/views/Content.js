@@ -13,8 +13,11 @@ import Header from '../components/Header'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#e2e2e2',
+  },
+  content: {
+    backgroundColor: '#fff',
+    padding: 15,
   },
   title_text: {
     fontSize: 15,

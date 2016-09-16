@@ -11,11 +11,11 @@ import {
 } from 'react-native'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  item: {
     padding: 10,
-    backgroundColor: '#F5FCFF',
-  },
+    backgroundColor: '#fff',
+    marginBottom: 10,
+  }
 })
 export default class Latest extends React.Component {
 
@@ -33,12 +33,12 @@ export default class Latest extends React.Component {
 
     return (
       <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.hotContainer}>
         {hotData !== undefined ? hotData.map((item, idx) => (
-          <TouchableOpacity key={idx} onPress={() => {
+          <TouchableOpacity key={idx} style={styles.item} onPress={() => {
             const topicItem = { 'topicItem': item }
             props.router.toContent(topicItem)
-          } }>
+          }}>
             <View>
               <Text>{item.title}</Text>
             </View>

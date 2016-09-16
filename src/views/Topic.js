@@ -14,9 +14,13 @@ import Loading from 'reactNativeLoading'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: '#F5FCFF',
+    
+    backgroundColor: '#e2e2e2',
   },
+  content: {
+    padding: 10,
+    backgroundColor: '#fff',
+  }
 })
 class Topic extends React.Component {
 
@@ -54,6 +58,7 @@ class Topic extends React.Component {
           foreground="dark" style={{ backgroundColor: '#fff' }}
           />
         <ScrollView>
+        <View style={styles.content}>
           {topic !== undefined ? topic.map((item, idx) => (
             <TouchableOpacity key={idx} onPress={() => {
               const topicItem = { 'topicItem': item }
@@ -64,6 +69,7 @@ class Topic extends React.Component {
               </View>
             </TouchableOpacity>
           )) : null}
+          </View>
         </ScrollView>
         <Loading
           loadingShow={this.state.loadingShow}
