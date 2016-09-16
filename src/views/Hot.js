@@ -1,12 +1,13 @@
 import React, {
-    Component,
-    PropTypes,
+  Component,
+  PropTypes,
 } from 'react'
 import {
-StyleSheet,
-    TouchableOpacity,
-    Text,
-    View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  View,
 } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -20,36 +21,31 @@ export default class Latest extends React.Component {
 
   constructor(props) {
     super(props)
-    this.toGoContent = this.toGoContent.bind(this)
   }
   static propTypes = {
     router: PropTypes.object,
-    // contentUrl: PropTypes.Function,
-  }
-
-  toGoContent(item) {
-    this.props.router.toContent({})
-   
   }
 
   render() {
-    const hotData = this.props.hotTopic
-    const { router, contentUrl } = this.props
-    // console.log(latestData)
-    console.log(router)
+    const props = this.props
+    const hotData = props.hotTopic
+    const { router } = props
+
     return (
+      <ScrollView>
       <View style={styles.container}>
         {hotData !== undefined ? hotData.map((item, idx) => (
-          // contentUrl = item.url
-          <TouchableOpacity key={idx} contentUrl={item.url} onPress={(item) => {
-            router.toContent()
-          }}>
+          <TouchableOpacity key={idx} onPress={() => {
+            const topicItem = { 'topicItem': item }
+            props.router.toContent(topicItem)
+          } }>
             <View>
               <Text>{item.title}</Text>
             </View>
           </TouchableOpacity>
         )) : null}
       </View>
+      </ScrollView>
     )
   }
 }

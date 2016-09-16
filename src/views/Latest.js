@@ -1,12 +1,13 @@
 import React, {
-    Component,
-    PropTypes,
+  Component,
+  PropTypes,
 } from 'react'
 import {
-StyleSheet,
-    TouchableOpacity,
-    Text,
-    View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Text,
+  View,
 } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -17,37 +18,32 @@ const styles = StyleSheet.create({
   },
 })
 export default class Latest extends React.Component {
-
   constructor(props) {
     super(props)
-    this.toContent = this.toContent.bind(this)
   }
   static propTypes = {
     router: PropTypes.object,
-    // contentUrl: PropTypes.Function,
-  }
-
-  toContent(item) {
-    this.props['topicItem']=item
-    this.props.router.toContent({})
-    alert(2)
-   
   }
 
   render() {
     const latestData = this.props.latestTopic
     const { router } = this.props
-    console.log(latestData)
+    const props = this.props
     return (
+      <ScrollView>
       <View style={styles.container}>
         {latestData !== undefined ? latestData.map((item, idx) => (
-          <TouchableOpacity key={idx} onPress={this.toContent(item)}>
+          <TouchableOpacity key={idx} onPress={() => {
+            const topicItem = { 'topicItem': item }
+            props.router.toContent(topicItem)
+          } }>
             <View>
               <Text>{item.title}</Text>
             </View>
           </TouchableOpacity>
         )) : null}
       </View>
+      </ScrollView>
     )
   }
 }

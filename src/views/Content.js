@@ -1,15 +1,14 @@
-
 import React, {
   Component,
 } from 'react'
 import {
   StyleSheet,
-  ListView,
+  ScrollView,
   TouchableOpacity,
   Text,
-  WebView,
   View,
 } from 'react-native'
+import Loading from 'reactNativeLoading'
 import Header from '../components/Header'
 const styles = StyleSheet.create({
   container: {
@@ -17,29 +16,58 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#F5FCFF',
   },
-})
-const WEBVIEW_REF = 'webview'
-class Content extends React.Component {
+  title_text: {
+    fontSize: 15,
+  },
+  body_text: {
+    fontSize: 14,
+  },
+  reply: {
 
+  }
+})
+class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-     
+      loadingShow: true,
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      loadingShow: false,
+    })
+  }
   render() {
-    const { topicItem } = this.props
-    console.log(contenturl)
+    const { router, topicItem } = this.props
     return (
       <View style={styles.container}>
-        <Header title="V2EX" foreground="dark" style={{ backgroundColor: '#fff' }} />
-        <View style={styles.content}>
-          {topicItem}
-        </View>
-        <View style={styles.reply}>
-
-        </View>
+        <Header title="帖子详情"
+          leftItem={{
+            icon: 'angle-left',
+            layout: 'fontIcon',
+            onPress: () => router.pop(),
+          }}
+          foreground="dark" style={{ backgroundColor: '#fff' }}
+        />
+        <ScrollView>
+          <View style={styles.content}>
+            <View style={styles.title}>
+              <Text style={styles.title_text}>{topicItem.title}</Text>
+            </View>
+            <View style={styles.body}>
+              <Text style={styles.body_text}>
+                {topicItem.content}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.reply}>
+          </View>
+        </ScrollView>
+        <Loading
+          loadingShow={this.state.loadingShow}
+        />
       </View>
     )
   }

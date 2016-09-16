@@ -4,15 +4,14 @@ import {
   Text,
   Image,
   StyleSheet,
-  ScrollView,
-  Dimensions,
 } from 'react-native'
-import List from './List'
+
 import Latest from './Latest'
 import Hot from './Hot'
+import AllNode from './AllNode'
 import Header from '../components/Header'
 import TabBar from '../components/TabBar'
-
+import Loading from 'reactNativeLoading'
 
 const styles = StyleSheet.create({
   container: {
@@ -33,50 +32,72 @@ const styles = StyleSheet.create({
 class Home extends React.Component {
   constructor(props) {
     super(props)
+    this.setLoadState = this.setLoadState.bind(this)
+    this.state = {
+      loadingShow: true,
+    }
   }
 
   componentDidMount() {
-    const { actions, router } = this.props
-    actions.getLatestTopic()
+    const { actions } = this.props
+    actions.getLatestTopic().then(() => {
+      this.setLoadState(false)
+    })
+  }
+  setLoadState(bool) {
+    this.setState({
+      loadingShow: bool,
+    })
   }
   render() {
     const props = this.props
+    const { actions, router } = props
     return (
       <View style={styles.container}>
         <Header title="V2EX" foreground="dark" style={{ backgroundColor: '#fff' }} />
         <TabBar style={styles.content}>
           <TabBar.Item
-            onPress={() => {}}
+            onPress={() => { }}
             title="最新"
           >
-            <Latest router={this.props.router} latestTopic={this.props.latestTopic} />
+            <Latest router={router} latestTopic={props.latestTopic} />
           </TabBar.Item>
           <TabBar.Item
             onPress={() => {
-              const { actions } = props
-              actions.getHotTopic()
+              props.hotTopic === undefined ? this.setLoadState(true) : this.setLoadState(false)
+              actions.getHotTopic().then(() => {
+                this.setLoadState(false)
+              })
             }}
             title="最热"
           >
-            <Hot router={this.props.router} hotTopic={this.props.hotTopic} />
+            <Hot router={router} hotTopic={props.hotTopic} />
           </TabBar.Item>
           <TabBar.Item
-            title="话题"
+            title="节点"
+            onPress={() => {
+              props.allNode === undefined ? this.setLoadState(true) : this.setLoadState(false)
+              actions.getAllNode().then(() => {
+                this.setLoadState(false)
+              })
+            }}
           >
-            <List />
+            <AllNode router={router} actions={props.actions} allNode={props.allNode} />
           </TabBar.Item>
 
         </TabBar>
-
+        <Loading
+          loadingShow={this.state.loadingShow}
+        />
       </View>
     )
   }
 }
 export const LayoutComponent = Home
 export function mapStateToProps(state, props) {
-  console.log(JSON.stringify(state))
   return {
     latestTopic: state.latest.latestTopic,
     hotTopic: state.hot.hotTopic,
+    allNode: state.allNode.allNode,
   }
 }

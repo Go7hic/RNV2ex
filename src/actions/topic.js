@@ -2,12 +2,15 @@ import * as types from './ActionTypes'
 import { createAction } from 'redux-actions'
 import api from '../config/api'
 import axios from 'axios'
-export const getHotTopic = createAction(types.GET_HOT_TOPIC, async () => {
-  return await axios.get(api.hot_topic)
+export const getTopic = createAction(types.GET_TOPIC, async (nodename) => {
+  return await axios.get(api.topic, {
+      params: {
+        node_name: nodename
+      }
+    })
     .then(response => {
-      // console.log(JSON.stringify(response))
       return {
-        hotTopic: response.data,
+        topic: response.data,
       }
     })
     .catch(error => {

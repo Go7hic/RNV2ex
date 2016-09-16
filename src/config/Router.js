@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux'
 import * as Home from '../views/Home'
 import * as Content from '../views/Content'
+import * as Topic from '../views/Topic'
 import connectComponent from '../utils/connectComponent'
 export default class Router {
   constructor(navigator) {
@@ -62,6 +63,12 @@ export default class Router {
     this.push(props, {
       component: Content,
       name: 'content',
+    })
+  }
+  toTopic(props) {
+    this.push(props, {
+      component: Topic,
+      name: 'Topic',
     })
   }
 }
