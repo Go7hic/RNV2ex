@@ -56,10 +56,17 @@ class Home extends React.Component {
     return (
       <View style={styles.container}>
         <Header title="V2EX" foreground="dark" style={{ backgroundColor: '#fff' }} />
-        <TabBar style={styles.content}>
+        <TabBar
+          style={styles.content}
+          navFontSize={12}
+          navTextColor="#666"
+          navTextColorSelected="#1d9d74"
+        >
           <TabBar.Item
             onPress={() => { }}
             title="最新"
+            icon="tint"
+            selectedIcon="tint"
           >
             <Latest router={router} latestTopic={props.latestTopic} />
           </TabBar.Item>
@@ -71,11 +78,15 @@ class Home extends React.Component {
               })
             }}
             title="最热"
+            icon="fire"
+            selectedIcon="fire"
           >
             <Hot router={router} hotTopic={props.hotTopic} />
           </TabBar.Item>
           <TabBar.Item
             title="节点"
+            icon="code"
+            selectedIcon="code"
             onPress={() => {
               props.allNode === undefined ? this.setLoadState(true) : this.setLoadState(false)
               actions.getAllNode().then(() => {

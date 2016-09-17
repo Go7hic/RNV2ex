@@ -2,6 +2,7 @@ import React, {
   Component,
   PropTypes,
 } from 'react'
+
 import {
   StyleSheet,
   TouchableOpacity,
@@ -9,12 +10,10 @@ import {
   ScrollView,
   View,
 } from 'react-native'
-
+import ItemCell from '../components/ItemCell'
 const styles = StyleSheet.create({
-  item: {
-    padding: 10,
-    backgroundColor: '#fff',
-    marginBottom: 10,
+  hotContainer: {
+
   }
 })
 export default class Latest extends React.Component {
@@ -35,13 +34,18 @@ export default class Latest extends React.Component {
       <ScrollView>
       <View style={styles.hotContainer}>
         {hotData !== undefined ? hotData.map((item, idx) => (
-          <TouchableOpacity key={idx} style={styles.item} onPress={() => {
+          <TouchableOpacity key={idx} onPress={() => {
             const topicItem = { 'topicItem': item }
             props.router.toContent(topicItem)
           }}>
-            <View>
-              <Text>{item.title}</Text>
-            </View>
+             <ItemCell 
+              itemContent={item} 
+              title={item.title} 
+              nodetitle={item.node.title}
+              imgUrl={`https:${item.member.avatar_mini}`}
+              replies={item.replies}
+              username={item.member.username}
+            />
           </TouchableOpacity>
         )) : null}
       </View>

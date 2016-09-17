@@ -10,23 +10,22 @@ import {
   View,
 } from 'react-native'
 import Header from '../components/Header'
+import ItemCell from '../components/ItemCell'
 import Loading from 'reactNativeLoading'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
     backgroundColor: '#e2e2e2',
   },
   content: {
-    padding: 10,
-    backgroundColor: '#fff',
+    // padding: 10,
   }
 })
 class Topic extends React.Component {
 
   constructor(props) {
     super(props)
-     this.state = {
+    this.state = {
       loadingShow: true,
     }
 
@@ -47,9 +46,10 @@ class Topic extends React.Component {
   render() {
     const props = this.props
     const {topic, nodeInfo, router} = props
+  
     return (
       <View style={styles.container}>
-        <Header title={nodeInfo.name}
+        <Header title={nodeInfo.node ? nodeInfo.node.title : nodeInfo.title}
           leftItem={{
             icon: 'angle-left',
             layout: 'fontIcon',
@@ -58,25 +58,28 @@ class Topic extends React.Component {
           foreground="dark" style={{ backgroundColor: '#fff' }}
           />
         <ScrollView>
-        <View style={styles.content}>
-          {topic !== undefined ? topic.map((item, idx) => (
-            <TouchableOpacity key={idx} onPress={() => {
-              const topicItem = { 'topicItem': item }
-              props.router.toContent(topicItem)
-            } }>
-              <View>
-                <Text>{item.title}</Text>
-              </View>
-            </TouchableOpacity>
-          )) : null}
+          <View style={styles.content}>
+            {topic !== undefined ? topic.map((item, idx) => (
+              <TouchableOpacity key={idx} onPress={() => {
+                const topicItem = { 'topicItem': item }
+                props.router.toContent(topicItem)
+              } }>
+                <ItemCell
+                  itemContent={item}
+                  title={item.title}
+                  nodetitle={item.node.title}
+                  imgUrl={`https:${item.member.avatar_mini}`}
+                  replies={item.replies}
+                  username={item.member.username}
+                  />
+              </TouchableOpacity>
+            )) : null}
           </View>
         </ScrollView>
         <Loading
           loadingShow={this.state.loadingShow}
-        />
+          />
       </View>
-
-
     )
   }
 }

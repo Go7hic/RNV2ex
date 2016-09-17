@@ -1,13 +1,16 @@
-
+import React, {Component} from 'react'
 import {
   StyleSheet,
   View,
   Text,
-} from 'react-native';
-import React, {Component} from 'react';
+} from 'react-native'
 
+const styles = StyleSheet.create({
+  weight: {
+    flex: 1,
+  }
+});
 export default class TabBarItem extends Component {
-
   render() {
     let child = this.props.children;
     if (child.length && child.length > 0) {
@@ -21,9 +24,3 @@ export default class TabBarItem extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  weight: {
-    flex: 1,
-  }
-});

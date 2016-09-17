@@ -24,6 +24,7 @@
     "react": "15.3.1",
     "react-native": "0.33.0",
     "react-native-code-push": "^1.11.0-beta",
+    "react-native-simple-markdown": "^1.0.54",
     "react-native-vector-icons": "^2.1.0",
     "react-redux": "^4.4.5",
     "react-timer-mixin": "^0.13.3",
@@ -35,7 +36,5 @@
     "remote-redux-devtools": "^0.2.0",
     "remote-redux-devtools-on-debugger": "^0.4.7"
   },
-  "devDependencies": {
-    "react-native-webpack-server": "^0.9.3"
-  }
+  "devDependencies": {}
 }

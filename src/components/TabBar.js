@@ -1,4 +1,4 @@
-
+import React, {Component} from 'react'
 import {
   StyleSheet,
   View,
@@ -8,10 +8,111 @@ import {
   Dimensions,
   Animated
 } from 'react-native';
-import React, {Component} from 'react'
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 import TabBarItem from './TabBarItem';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+    overflow: 'hidden',
+  },
+  content: {
+    flex: 1
+  },
+  base: {
+    position: 'absolute',
+    overflow: 'hidden',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+  gone: {
+    top: Dimensions.get('window').height,
+    bottom: -Dimensions.get('window').height,
+  },
+  nav: {
+    flexDirection: 'row',
+    width: Dimensions.get('window').width,
+    backgroundColor: '#f3f3f3',
+  },
+  navItem: {
+    flex: 1,
+    paddingTop: 6,
+    paddingBottom: 6,
+    alignItems: 'center',
+  },
+  center: {
+    width: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  navImage: {
+    width: 24,
+    height: 24,
+    marginBottom: 2,
+  },
+  navImageChange: {
+    top: -28,
+    width: 56,
+    height: 56,
+    marginBottom: 2,
+    position: 'absolute',
+    borderRadius: 28,
+    borderWidth: 3,
+    borderColor: '#fff',
+    alignSelf: 'center'
+  },
+  navTextChange: {
+    marginTop: 30,
+    fontSize: 11,
+    alignSelf: 'center'
+  },
+  navText: {
+    marginTop: 2,
+    alignSelf: 'center',
+  },
+  horizonLine: {
+    backgroundColor: '#e2e2e2',
+    height: 1,
+    width: Dimensions.get('window').width,
+  },
+  badgeNoNumber: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: -2,
+    left: 36,
+    position: 'absolute',
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    alignItems: 'center',
+    borderColor: '#ffffff',
+    backgroundColor: '#ff0000',
+  },
+  badgeWithNumber: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: -4,
+    left: 36,
+    position: 'absolute',
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    backgroundColor: '#ff0000',
+  },
+  badgeText: {
+    alignSelf: 'center',
+    fontSize: 11,
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
+});
 export default class TabBar extends Component {
   static Item = TabBarItem;
 
@@ -96,7 +197,7 @@ export default class TabBar extends Component {
 
     const contentViews = children.map(
       (child, i) => {
-        const imgSrc = this.state.selectedIndex == i ? child.props.selectedIcon : child.props.icon;
+        const iconName = this.state.selectedIndex == i ? child.props.selectedIcon : child.props.icon;
         const color = this.state.selectedIndex == i ? this.props.navTextColorSelected : this.props.navTextColor;
 
         navs[i] = (
@@ -112,7 +213,8 @@ export default class TabBar extends Component {
               this.update(i);
             } }>
             <View style={styles.center}>
-              <Image style={[styles.navImage, this._stressPoint(child) ? styles.navImageChange : undefined]} resizeMode='cover' source={imgSrc}/>
+              <Icon name={iconName} size={20} color={color} />
+              
               <Text style={[styles.navText, { color: color, fontSize: this.props.navFontSize }, this._stressPoint(child) ? styles.navTextChange : '']}>
                 {child.props.title}
               </Text>
@@ -179,105 +281,3 @@ export default class TabBar extends Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: Dimensions.get('window').width,
-    overflow: 'hidden',
-  },
-  content: {
-    flex: 1
-  },
-  base: {
-    position: 'absolute',
-    overflow: 'hidden',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-  },
-  gone: {
-    top: Dimensions.get('window').height,
-    bottom: -Dimensions.get('window').height,
-  },
-  nav: {
-    flexDirection: 'row',
-    width: Dimensions.get('window').width,
-    backgroundColor: '#f3f3f3',
-  },
-  navItem: {
-    flex: 1,
-    paddingTop: 6,
-    paddingBottom: 6,
-    alignItems: 'center',
-  },
-  center: {
-    width: 56,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navImage: {
-    width: 24,
-    height: 24,
-    marginBottom: 2,
-  },
-  navImageChange: {
-    top: -28,
-    width: 56,
-    height: 56,
-    marginBottom: 2,
-    position: 'absolute',
-    borderRadius: 28,
-    borderWidth: 3,
-    borderColor: '#fff',
-    alignSelf: 'center'
-  },
-  navTextChange: {
-    marginTop: 30,
-    fontSize: 11,
-    alignSelf: 'center'
-  },
-  navText: {
-    marginTop: 2,
-    alignSelf: 'center',
-  },
-  horizonLine: {
-    backgroundColor: '#adadad',
-    height: 1,
-    width: Dimensions.get('window').width,
-  },
-  badgeNoNumber: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    top: -2,
-    left: 36,
-    position: 'absolute',
-    width: 10,
-    height: 10,
-    borderRadius: 10,
-    borderWidth: 1,
-    alignItems: 'center',
-    borderColor: '#ffffff',
-    backgroundColor: '#ff0000',
-  },
-  badgeWithNumber: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    top: -4,
-    left: 36,
-    position: 'absolute',
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ffffff',
-    backgroundColor: '#ff0000',
-  },
-  badgeText: {
-    alignSelf: 'center',
-    fontSize: 11,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-});

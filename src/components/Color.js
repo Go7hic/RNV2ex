@@ -12,7 +12,7 @@ let colors = {
 
   //----------header color----------
   headerTextColor: '#5d5d5d',
-  headerFontIconColor: '#4078c0',
+  headerFontIconColor: '#1d9d74',
   headerBgColor: '#fff',
   headerBottomLineColor: 'rgba(175,175,175,0.49)'
 
