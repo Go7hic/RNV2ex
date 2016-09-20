@@ -49,9 +49,9 @@ export default class Navigation extends Component {
         <Navigator
           ref={view => this.navigator = view}
           initialRoute={initialRoute}
-          configureScene={this.configureScene.bind(this) }
-          renderScene={this.renderScene.bind(this) }
-          />
+          configureScene={this.configureScene.bind(this)}
+          renderScene={this.renderScene.bind(this)}
+        />
         <Utils />
       </View>
     )

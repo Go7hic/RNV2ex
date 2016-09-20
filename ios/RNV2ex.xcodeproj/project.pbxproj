@@ -29,7 +29,6 @@
 		77BC53773D33460CA711D454 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F658D6664B84A70B056F2A1 /* Foundation.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A1630481BF32407FBD37AE54 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FD94E64D499436C92CD7FA9 /* Zocial.ttf */; };
-		B08F5D301D86C25C00F8B836 /* libReactNativeControllers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B08F5D2E1D86C22A00F8B836 /* libReactNativeControllers.a */; };
 		D8F9281571A14645B6E15277 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60455D4FADC64916AD6C1C2D /* Octicons.ttf */; };
 		E747761D1E8D4286A2F82383 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E3ECA266AF4F168C70CD6F /* FontAwesome.ttf */; };
 		F02D1E6362564C3685440C47 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4045AAA822CA4F7DA5B39A6B /* Ionicons.ttf */; };
@@ -177,7 +176,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B08F5D301D86C25C00F8B836 /* libReactNativeControllers.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -428,7 +426,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = CE8N4Z6AQ3;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = CE8N4Z6AQ3;
 					};
 				};
 			};
@@ -677,6 +679,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = CE8N4Z6AQ3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -698,6 +701,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = CE8N4Z6AQ3;
 				INFOPLIST_FILE = RNV2exTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -714,7 +718,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = CE8N4Z6AQ3;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -730,6 +737,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = RNV2ex;
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO;
 			};
 			name = Debug;
 		};
@@ -737,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CE8N4Z6AQ3;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -752,6 +761,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = RNV2ex;
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO;
 			};
 			name = Release;
 		};
