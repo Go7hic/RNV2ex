@@ -1,6 +1,6 @@
 # RNV2ex
 
-基于 React-Native & Redux 架构的 v2ex 客户端。目前页面设计还在完善中...
+基于 React-Native & Redux 架构的 v2ex 客户端。
 
 #### Usage
 
