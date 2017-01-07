@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver",
+    "push-ios": "code-push release-react RNV2ex ios --deploymentName Staging",
+    "build-ios": "react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false"
+  
   },
   "dependencies": {
     "axios": "^0.14.0",

@@ -12,6 +12,9 @@
 - react-native run-ios || react-native run-android
 - npm start
 
+### 下载地址
+
+还没上传到 AppStore 上面，先在 fir.im 上面下载体验 https://fir.im/1fqh
 
 #### 一些页面
 

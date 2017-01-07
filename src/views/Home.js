@@ -4,6 +4,7 @@ import {
   Text,
   Image,
   StyleSheet,
+  ImagePickerIOS,
 } from 'react-native'
 
 import Latest from './Latest'
