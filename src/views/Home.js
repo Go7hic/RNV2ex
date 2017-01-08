@@ -56,7 +56,7 @@ class Home extends React.Component {
     const { actions, router } = props
     return (
       <View style={styles.container}>
-        <Header title="V2EX" foreground="dark" style={{ backgroundColor: '#fff' }} />
+        <Header title="V2EX" foreground="gray" style={{ backgroundColor: '#fff' }} />
         <TabBar
           style={styles.content}
           navFontSize={12}

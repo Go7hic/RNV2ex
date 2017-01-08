@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   NetInfo,
-  AppState,
   Platform,
 } from 'react-native'
 
@@ -19,5 +18,5 @@ export function shouldSync() {
     }))
 }
 export function sync() {
-  shouldSync().done((shouldSync) => shouldSync && codePush.sync())
+  shouldSync().done(shouldSync => shouldSync && codePush.sync())
 }

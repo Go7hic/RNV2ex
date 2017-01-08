@@ -9,7 +9,6 @@
     "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver",
     "push-ios": "code-push release-react RNV2ex ios --deploymentName Staging",
     "build-ios": "react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false"
-  
   },
   "dependencies": {
     "axios": "^0.14.0",
@@ -29,7 +28,7 @@
     "query-string": "^4.1.0",
     "react": "15.3.1",
     "react-native": "0.33.0",
-    "react-native-code-push": "^1.11.0-beta",
+    "react-native-code-push": "^1.16.1-beta",
     "react-native-simple-markdown": "^1.0.54",
     "react-native-vector-icons": "^2.1.0",
     "react-redux": "^4.4.5",

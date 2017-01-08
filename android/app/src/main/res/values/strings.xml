@@ -1,4 +1,5 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">4osMwvswPqI_LPmN7OHHQH9fZydz4JFyAXk8Z</string>
 
     <string name="app_name">RNV2ex</string>
 </resources>
