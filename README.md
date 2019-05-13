@@ -1,5 +1,5 @@
 # RNV2ex
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) [![Greenkeeper badge](https://badges.greenkeeper.io/dyygtfx/RNV2ex.svg)](https://greenkeeper.io/)
 
 基于 React-Native & Redux 的 v2ex 客户端
 
